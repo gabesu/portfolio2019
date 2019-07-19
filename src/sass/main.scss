@@ -1,0 +1,27 @@
+@import "reset";
+@import "query";
+@import url("https://fonts.googleapis.com/css?family=Karla:400,700&display=swap");
+
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	font-family: "Karla", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: #009950;
+	color: white;
+	font-size: 18px;
+	line-height: 27px;
+	::selection {
+		background: black;
+	}
+	::-moz-selection {
+		background: black;
+	}
+}
+main {
+	width: calc(100vw - 100px);
+	padding-right: 50px;
+}
