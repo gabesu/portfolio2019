@@ -34,8 +34,20 @@ const Hero = () => {
 					Selected Works
 				</button>
 				<span className="links">
-					<a href="#">Codepen</a>
-					<a href="#">Dribbble</a>
+					<a
+						href="https://codepen.io/GabEsu"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Codepen
+					</a>
+					<a
+						href="https://dribbble.com/GabEsu"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Dribbble
+					</a>
 				</span>
 			</section>
 			<Sketch />
