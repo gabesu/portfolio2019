@@ -4,7 +4,7 @@ import "./sidebar.scss";
 const Sidebar = () => {
 	return (
 		<aside className="side-bar">
-			<a href="#">
+			<a href="./" className="logo">
 				<svg
 					width="25"
 					height="24"
@@ -21,13 +21,31 @@ const Sidebar = () => {
 
 			<ul className="social-links">
 				<li>
-					<a href="#">Instagram</a>
+					<a
+						href="https://instagram.com/mmediong"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Instagram
+					</a>
 				</li>
 				<li>
-					<a href="#">Dribbble</a>
+					<a
+						href="https://dribbble.com/gabesu"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Dribbble
+					</a>
 				</li>
 				<li>
-					<a href="#">Codepen</a>
+					<a
+						href="https://codepen.io/GabEsu/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Codepen
+					</a>
 				</li>
 			</ul>
 		</aside>

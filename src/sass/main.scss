@@ -20,8 +20,17 @@ body {
 	::-moz-selection {
 		background: black;
 	}
+	@include mobile {
+		font-size: 14px;
+		line-height: 18px;
+	}
 }
 main {
 	width: calc(100vw - 100px);
 	padding-right: 50px;
+	@include mobile {
+		width: 100%;
+		padding: 20px;
+		text-align: center;
+	}
 }

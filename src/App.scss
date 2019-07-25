@@ -1,11 +1,18 @@
+@import "./sass/query";
 .App {
 	display: flex;
+	cursor: none;
 }
 h1 {
 	font-size: 120px;
 	letter-spacing: -10px;
 	font-weight: 700;
 	line-height: 100px;
+	@include mobile {
+		font-size: 48px;
+		line-height: 50px;
+		letter-spacing: -3px;
+	}
 }
 h2 {
 	font-size: 96px;
@@ -13,6 +20,11 @@ h2 {
 	text-transform: uppercase;
 	font-weight: 700;
 	line-height: 96px;
+	@include mobile {
+		font-size: 36px;
+		line-height: 40px;
+		letter-spacing: -3px;
+	}
 }
 h3 {
 	font-size: 30px;
@@ -20,6 +32,7 @@ h3 {
 	position: relative;
 	z-index: 1;
 	margin-top: 50px;
+	line-height: 36px;
 	&:after {
 		content: "";
 		width: calc(100% - 300px);
@@ -29,6 +42,9 @@ h3 {
 		position: absolute;
 		bottom: 50%;
 		right: 0;
+		@include mobile {
+			display: none;
+		}
 	}
 }
 h4 {
@@ -44,4 +60,15 @@ h4 {
 	text-transform: uppercase;
 	background: black;
 	border-radius: 50px;
+	border: none;
+	font-size: 16px;
+	cursor: none;
+	outline: none;
+	&:hover {
+		background: #ffdb00;
+		color: black;
+	}
+}
+.filter {
+	display: none;
 }

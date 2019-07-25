@@ -1,3 +1,4 @@
+@import "../../sass/query";
 .side-bar {
 	padding: 20px 0;
 	height: 100vh;
@@ -9,6 +10,15 @@
 	position: sticky;
 	top: 0;
 	left: 0;
+	z-index: 2;
+	@include mobile {
+		display: none;
+	}
+	.logo:hover {
+		path {
+			fill: black;
+		}
+	}
 
 	.social-links {
 		display: flex;
@@ -24,6 +34,46 @@
 			color: white;
 			text-decoration: none;
 			text-transform: uppercase;
+			position: relative;
+			transition: color 200ms ease-out;
 		}
+		a:before {
+			content: "";
+			display: block;
+			background: #ffdb00;
+			height: 12px;
+			width: 100%;
+			transform: scaleX(0);
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		a:hover {
+			color: black;
+			font-weight: 700;
+			cursor: none;
+		}
+		a:hover::before {
+			animation: linkHover 500ms ease-out forwards;
+		}
+	}
+}
+
+@keyframes linkHover {
+	0% {
+		transform-origin: left center;
+		transform: scaleX(0);
+	}
+	50% {
+		transform: scaleX(1);
+		transform-origin: left center;
+	}
+	60% {
+		transform: scaleX(1);
+		transform-origin: right center;
+	}
+	100% {
+		transform-origin: right center;
+		transform: scaleX(0);
 	}
 }

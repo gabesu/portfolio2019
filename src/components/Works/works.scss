@@ -1,20 +1,48 @@
+@import "../../sass/query";
 .works {
 	width: 100%;
-	height: 100vh;
+	height: calc(100vh - 50px);
 	display: flex;
 	flex-direction: column;
+	@include mobile {
+		height: auto;
+	}
 }
+.work-content {
+	margin: auto;
+	display: grid;
+	grid-template-columns: 460px 1fr;
+	@include mobile {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	h2 {
+		margin-top: 40px;
+	}
+}
+
 .work {
-	margin-top: 150px;
+	grid-column: 1/3;
 	display: grid;
 	grid-template-columns: 420px 1fr;
+	@include mobile {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		order: 2;
+		margin-top: 40px;
+	}
 	.role {
 		color: #00e88d;
-		margin-bottom: 40px;
+		margin-bottom: 20px;
 	}
 	.work-image {
-		// background: rgba(0, 0, 0, 0.5);
-		height: 350px;
+		height: 400px;
+		@include mobile {
+			width: 100%;
+			height: 200px;
+		}
 		img {
 			width: 100%;
 			height: 100%;
@@ -23,21 +51,46 @@
 	}
 	article {
 		padding-left: 40px;
-		height: 350px;
+		height: 400px;
 		display: flex;
 		flex-direction: column;
+		@include mobile {
+			padding: 0;
+		}
 	}
 	.description {
 		columns: 2;
+		@include mobile {
+			columns: 1;
+		}
+	}
+	.links {
+		padding: 20px 0;
+		a {
+			padding: 5px 10px;
+			font-size: 12px;
+			text-decoration: none;
+			color: black;
+			text-transform: uppercase;
+			font-weight: 700;
+			margin-right: 10px;
+			border-radius: 10px;
+			background: white;
+		}
 	}
 }
 .work-nav {
+	grid-column: 2/3;
 	display: flex;
-	margin-left: 460px;
 	margin-top: 20px;
+	@include mobile {
+		order: 1;
+		display: inline-flex;
+		justify-content: space-between;
+	}
 	button {
 		border: none;
-		cursor: pointer;
+		cursor: none;
 		outline: none;
 		display: inline-block;
 		background: black;
@@ -47,8 +100,65 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		svg {
+			transition: all 200ms cubic-bezier(0, 0, 0.21, 1.65);
+		}
 		&:nth-child(2) {
 			margin-left: 20px;
+			&:hover {
+				svg {
+					transform: translateX(5px);
+				}
+				@include mobile {
+					transform: translateX(0);
+				}
+			}
 		}
+		&:hover {
+			background: #ffdb00;
+			svg {
+				transform: translateX(-5px);
+			}
+			path {
+				stroke: black;
+			}
+			@include mobile {
+				background: black;
+				svg {
+					transform: translateX(0);
+				}
+				path {
+					stroke: white;
+				}
+			}
+		}
+		&:active {
+			background: #ffdb00;
+			svg {
+				transform: translateX(0);
+			}
+			path {
+				stroke: white;
+			}
+		}
+	}
+}
+
+.work-counter {
+	grid-column: 2/3;
+	display: flex;
+	height: 14px;
+	font-size: 14px;
+	font-weight: 700;
+	position: relative;
+	line-height: 14px;
+	overflow: hidden;
+	@include mobile {
+		margin-top: 40px;
+		justify-content: center;
+	}
+	.count {
+		transition: all 500ms cubic-bezier(0.31, 1.01, 0.55, 1.23);
+		transform-origin: top left;
 	}
 }

@@ -1,27 +1,49 @@
 const data = [
 	{
 		index: 0,
-		title: "Work One",
-		role: " UI Design, BRanding, Web Develompent",
+		title: "Hirefreehands",
+		role: " UI/UX Design, Web Develompent, Illustration, Animation",
 		image: "assets/images/test.jpg",
 		description:
-			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab laboriosam, tempore inventore minima provident molestiae recusandae adipisci similique modi obcaecati explicabo sint neque odit omnis saepe laborum id dignissimos voluptas corrupti cupiditate. Animi,fugit architecto."
+			"In the Fall of 2017 I had the opportunity to join Hirefreehands as a Co-founder and Chief Product Officer. I was responsible for ensuring that we delivered a beautiful experience to users from marketing to the web app. My day-to-day included writing HTML, CSS & Javascript along side a small team of developers and creating and supervising graphic design content for marketing and product purposes.",
+		links: [
+			{
+				title: "Visit Project",
+				url: '"https://hirefreehands.tech"'
+			}
+		]
 	},
 	{
 		index: 1,
-		title: "Work Two",
-		role: " UI Design, BRanding, Web Develompent",
+		title: "PiggyVest",
+		role: " UI Design, Logo Design, Web Develompent, Illustration, Animation",
 		image: "./../../assets/images/test.jpg",
 		description:
-			"Ab laboriosam, tempore inventore minima provident molestiae recusandae adipisci similique modi obcaecati explicabo sint neque odit omnis saepe laborum id dignissimos voluptas corrupti cupiditate. Animi,fugit architecto."
+			"Piggybank.ng (now PiggyVest) embarked on a design refresh for their website and brand identity in the winter of 2017. I worked alongside their team in creating a fresh brand identity along side a new product site. It was a huge success and saw their users increase because we were able to communicate 'Trust' through design.",
+		links: [
+			{
+				title: "Visit Project",
+				url: "https://piggyvest.com"
+			}
+		]
 	},
 	{
 		index: 2,
-		title: "Work Three",
-		role: " UI Design, BRanding, Web Develompent",
+		title: "Misc",
+		role: " Interaction Design, Animation, Illustration",
 		image: "./../../assets/images/test.jpg",
 		description:
-			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab laboriosam, tempore inventore minima provident molestiae recusandae adipisci similique modi obcaecati explicabo sint neque odit omnis saepe laborum id dignissimos voluptas corrupti cupiditate. Animi,fugit architecto."
+			"Over time I developed a passion for communicating design through animation and interaction. I spent a lot of time messing around and creating personal personal projects testing the limits of code and design. It was really fun :) Feel free to check them out <a>links</a>",
+		links: [
+			{
+				title: "Visit Codepen",
+				url: "https://codepen.io/GabEsu"
+			},
+			{
+				title: "Visit Dribbble",
+				url: "https://dribbble.com/GabEsu"
+			}
+		]
 	}
 ];
 

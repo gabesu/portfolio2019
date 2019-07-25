@@ -1,0 +1,15 @@
+@import "../../sass/query";
+.cursor {
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	transition: all 100ms ease-out;
+	z-index: 1;
+	mix-blend-mode: exclusion;
+	-webkit-mix-blend-mode: exclusion;
+	-moz-mix-blend-mode: exclusion;
+	@include mobile {
+		display: none;
+	}
+}

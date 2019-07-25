@@ -42,26 +42,21 @@ export default class Work extends Component {
 				<p className="description" ref={p => (this.description = p)}>
 					{this.props.workData.description}
 				</p>
+				<span className="links">
+					{this.props.workData.links.map(link => {
+						return (
+							<a
+								href={link.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								key={link.url}
+							>
+								{link.title}
+							</a>
+						);
+					})}
+				</span>
 			</article>
 		);
 	}
 }
-
-// const Work = props => {
-// 	const { ID, title, role, image, description } = props.workData;
-// 	return (
-// 		<div className="work">
-// 			<div className="work-image">
-// 				<img src={image} alt="" />
-// 			</div>
-// 			<article>
-// 				<h2>{title}</h2>
-// 				<span className="role">{role}</span>
-// 				<h4>Brief</h4>
-// 				<p className="description">{description}</p>
-// 			</article>
-// 		</div>
-// 	);
-// };
-
-// export default Work;

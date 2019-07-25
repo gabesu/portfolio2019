@@ -4,35 +4,35 @@ import { TweenMax, Power2 } from "gsap";
 import Work from "./Work";
 import "./works.scss";
 import data from "./data";
-import image1 from "./../../assets/images/test-1.jpg";
-import image2 from "./../../assets/images/test-2.jpg";
-import image3 from "./../../assets/images/test-3.jpg";
+import image1 from "./../../assets/images/hfh-cover.png";
+import image2 from "./../../assets/images/piggy.jpg";
+import image3 from "./../../assets/images/phone.gif";
 
 const myImages = [image1, image2, image3];
 const duration = 500;
 
-const cb = () => {
-	console.log("finished");
-};
 const animation = (target, dur) =>
 	TweenMax.from(target, dur / 1000, {
 		opacity: 0,
 		width: "90%",
-		ease: Power2.easeInOut,
-		onComplete: cb
+		ease: Power2.easeInOut
 	});
 
 export default class Works extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			allWorks: data,
 			activeWork: data[0],
+			workCount: data.length,
 			entered: true,
 			image: myImages[0]
 		};
 	}
 	componentDidMount() {
-		console.log(this.state.activeWork.index);
+		myImages.forEach(image => {
+			new Image().src = image;
+		});
 	}
 	nextWork = () => {
 		const newIndex = this.state.activeWork.index + 1;
@@ -41,7 +41,6 @@ export default class Works extends Component {
 				entered: false
 			});
 			setTimeout(() => {
-				console.log("Timeeee");
 				this.setState({
 					activeWork: data[newIndex],
 					image: myImages[newIndex],
@@ -69,7 +68,6 @@ export default class Works extends Component {
 				entered: false
 			});
 			setTimeout(() => {
-				console.log("Timeeee");
 				this.setState({
 					activeWork: data[newIndex],
 					image: myImages[newIndex],
@@ -90,92 +88,105 @@ export default class Works extends Component {
 		}
 	};
 	render() {
-		const { activeWork, image } = this.state;
+		const { activeWork, image, workCount, allWorks } = this.state;
 		return (
-			<section className="works">
+			<section className="works" id="works">
 				<h3>Selected Works</h3>
-				<div className="work">
-					<div className="work-image">
+				<div className="work-content">
+					<span className="work-counter">
+						<div
+							className="count"
+							style={{ transform: `translateY(${-activeWork.index * 14}px)` }}
+						>
+							{allWorks.map(work => {
+								return <div key={work.index}>0{work.index + 1}</div>;
+							})}
+						</div>
+						<div className="total">&nbsp;/ 0{workCount}</div>
+					</span>
+					<div className="work">
+						<div className="work-image">
+							<Transition
+								in={this.state.entered}
+								onEnter={node => {
+									animation(node, duration);
+								}}
+								onExit={node => {
+									animation(node, duration).reverse(0);
+								}}
+								mountOnEnter
+								unmountOnExit
+								timeout={duration}
+							>
+								<img src={image} alt="" />
+							</Transition>
+						</div>
 						<Transition
 							in={this.state.entered}
-							onEnter={node => {
-								animation(node, duration);
-							}}
-							onExit={node => {
-								animation(node, duration).reverse(0);
-							}}
+							// onEnter={node => {
+							// 	animation(node, duration);
+							// }}
+							// onExit={node => {
+							// 	animation(node, duration).reverse(0);
+							// }}
 							mountOnEnter
 							unmountOnExit
 							timeout={duration}
 						>
-							<img src={image} alt="" />
+							<Work workData={activeWork} />
 						</Transition>
 					</div>
-					<Transition
-						in={this.state.entered}
-						// onEnter={node => {
-						// 	animation(node, duration);
-						// }}
-						// onExit={node => {
-						// 	animation(node, duration).reverse(0);
-						// }}
-						mountOnEnter
-						unmountOnExit
-						timeout={duration}
-					>
-						<Work workData={activeWork} />
-					</Transition>
-				</div>
-				<div className="work-nav">
-					<button onClick={() => this.prevWork()}>
-						<svg
-							width="24"
-							height="24"
-							viewBox="0 0 24 24"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M20 12H4"
-								stroke="white"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-							<path
-								d="M10 18L4 12L10 6"
-								stroke="white"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-						</svg>
-					</button>
+					<div className="work-nav">
+						<button onClick={() => this.prevWork()}>
+							<svg
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M20 12H4"
+									stroke="white"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+								<path
+									d="M10 18L4 12L10 6"
+									stroke="white"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						</button>
 
-					<button onClick={() => this.nextWork()}>
-						<svg
-							width="24"
-							height="24"
-							viewBox="0 0 24 24"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M4 12H20"
-								stroke="white"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-							<path
-								d="M14 6L20 12L14 18"
-								stroke="white"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-						</svg>
-					</button>
+						<button onClick={() => this.nextWork()}>
+							<svg
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M4 12H20"
+									stroke="white"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+								<path
+									d="M14 6L20 12L14 18"
+									stroke="white"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						</button>
+					</div>
 				</div>
 			</section>
 		);
