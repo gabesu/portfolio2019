@@ -9,7 +9,7 @@ const data = [
 		links: [
 			{
 				title: "Visit Project",
-				url: '"https://hirefreehands.tech"'
+				url: "https://hirefreehands.tech/"
 			}
 		]
 	},
