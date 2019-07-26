@@ -33,7 +33,7 @@ const data = [
 		role: " Interaction Design, Animation, Illustration",
 		image: "./../../assets/images/test.jpg",
 		description:
-			"Over time I developed a passion for communicating design through animation and interaction. I spent a lot of time messing around and creating personal personal projects testing the limits of code and design. It was really fun :) Feel free to check them out in the links below.",
+			"Over time I developed a passion for communicating design through animation and interaction. I spent a lot of time messing around and creating personal projects testing the limits of code and design. It was really fun :) Feel free to check them out in the links below.",
 		links: [
 			{
 				title: "Visit Codepen",
