@@ -18,7 +18,12 @@
 		flex-direction: column;
 	}
 	h2 {
-		margin-top: 40px;
+		margin-top: 20px;
+		position: relative;
+		transform: translateX(-8px);
+		@include mobile {
+			transform: translateX(0);
+		}
 	}
 }
 
@@ -34,7 +39,7 @@
 		margin-top: 40px;
 	}
 	.role {
-		color: #00e88d;
+		color: black;
 		margin-bottom: 20px;
 	}
 	.work-image {
@@ -147,11 +152,11 @@
 .work-counter {
 	grid-column: 2/3;
 	display: flex;
-	height: 14px;
-	font-size: 14px;
+	height: 18px;
+	font-size: 18px;
 	font-weight: 700;
 	position: relative;
-	line-height: 14px;
+	line-height: 18px;
 	overflow: hidden;
 	@include mobile {
 		margin-top: 40px;

@@ -13,6 +13,7 @@ export default class Work extends Component {
 		this.role = null;
 		this.description = null;
 		this.brief = null;
+		this.links = null;
 	}
 	componentDidMount() {
 		// this.descriptionText = new SplitType(this.description);
@@ -24,7 +25,8 @@ export default class Work extends Component {
 				y: "20px",
 				opacity: 0,
 				ease: Power2.easeInOut
-			});
+			})
+			.from(this.links, 0.2, { y: "20px", opacity: 0, ease: Power2.easeIn });
 		this.workTl.play();
 	}
 	componentWillMount() {
@@ -38,11 +40,11 @@ export default class Work extends Component {
 				<span className="role" ref={span => (this.role = span)}>
 					{this.props.workData.role}
 				</span>
-				<h4 ref={h4 => (this.brief = h4)}>Brief</h4>
+				<h4 ref={h4 => (this.brief = h4)}>WORK SUMMARY</h4>
 				<p className="description" ref={p => (this.description = p)}>
 					{this.props.workData.description}
 				</p>
-				<span className="links">
+				<span className="links" ref={span => (this.links = span)}>
 					{this.props.workData.links.map(link => {
 						return (
 							<a

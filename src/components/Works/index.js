@@ -96,7 +96,7 @@ export default class Works extends Component {
 					<span className="work-counter">
 						<div
 							className="count"
-							style={{ transform: `translateY(${-activeWork.index * 14}px)` }}
+							style={{ transform: `translateY(${-activeWork.index * 18}px)` }}
 						>
 							{allWorks.map(work => {
 								return <div key={work.index}>0{work.index + 1}</div>;
@@ -137,7 +137,11 @@ export default class Works extends Component {
 						</Transition>
 					</div>
 					<div className="work-nav">
-						<button onClick={() => this.prevWork()}>
+						<button
+							onClick={() => this.prevWork()}
+							id="prev"
+							aria-label="Previous Work"
+						>
 							<svg
 								width="24"
 								height="24"
@@ -162,7 +166,11 @@ export default class Works extends Component {
 							</svg>
 						</button>
 
-						<button onClick={() => this.nextWork()}>
+						<button
+							onClick={() => this.nextWork()}
+							id="next"
+							aria-label="Next Work"
+						>
 							<svg
 								width="24"
 								height="24"

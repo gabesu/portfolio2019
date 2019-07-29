@@ -14,7 +14,7 @@ const Hero = () => {
 	return (
 		<header className="header">
 			<section>
-				<a href="./" className="logo-mobile">
+				<a href="./" className="logo-mobile" aria-label="Home link">
 					<svg
 						width="25"
 						height="24"
@@ -30,7 +30,12 @@ const Hero = () => {
 				</a>
 				<p className="name">Mmëdiong Gabriel Esu</p>
 				<h1>CREATIVE DESIGNER & DEVELOPER</h1>
-				<button className="button" onClick={() => handleClick()}>
+				<button
+					id="works-btn"
+					aria-label="Selected Works"
+					className="button"
+					onClick={() => handleClick()}
+				>
 					Selected Works
 				</button>
 				<span className="links">
@@ -38,6 +43,7 @@ const Hero = () => {
 						href="https://codepen.io/GabEsu"
 						target="_blank"
 						rel="noopener noreferrer"
+						aria-label="Codepen"
 					>
 						Codepen
 					</a>
@@ -45,6 +51,7 @@ const Hero = () => {
 						href="https://dribbble.com/GabEsu"
 						target="_blank"
 						rel="noopener noreferrer"
+						aria-label="Dribbble"
 					>
 						Dribbble
 					</a>

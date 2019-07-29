@@ -49,6 +49,18 @@ h3 {
 }
 h4 {
 	font-weight: bold;
+	position: relative;
+	margin-bottom: 20px;
+	&::after {
+		content: "";
+		display: block;
+		height: 2px;
+		width: 40px;
+		position: absolute;
+		bottom: -10px;
+		left: 0;
+		background: white;
+	}
 }
 .button {
 	margin-top: 40px;
