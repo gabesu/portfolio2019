@@ -2,7 +2,7 @@
 
 .header {
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	display: grid;
 	grid-template-columns: 60% 1fr;
 	align-items: center;
@@ -42,4 +42,17 @@
 			display: block;
 		}
 	}
+}
+
+.left-eye {
+	// transform: translateY(-15px);
+	// transform: translateY(5px);
+	// transform: translateX(35px);
+	transform: translateX(-25px);
+}
+.right-eye {
+	// transform: translateY(-15px);
+	transform: translateY(0px);
+	// transform: translateX(50px);
+	transform: translateX(-25px);
 }

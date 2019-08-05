@@ -10,8 +10,28 @@ const Cursor = () => {
 				window.scrollY -
 				myCursor.clientHeight / 2}px)`;
 		};
+		const sketchMove = e => {
+			let leftEye = document.querySelector(".left-eye");
+			let rightEye = document.querySelector(".right-eye");
+
+			let windowWidth = document.documentElement.clientWidth;
+			let windowHeight = document.documentElement.clientHeight;
+
+			let calcX = (e.clientX / windowWidth) * 100;
+			let calcY = (e.clientY / windowHeight) * 100;
+
+			let leftXRange = (60 / 100) * calcX - 25;
+			let leftYRange = (20 / 100) * calcY - 15;
+
+			let rightXRange = (75 / 100) * calcX - 25;
+			let rightYRange = (15 / 100) * calcY - 15;
+
+			leftEye.style.transform = `translate(${leftXRange}px, ${leftYRange}px)`;
+			rightEye.style.transform = `translate(${rightXRange}px, ${rightYRange}px)`;
+		};
 
 		document.addEventListener("mousemove", e => CursorFollow(e));
+		document.addEventListener("mousemove", e => sketchMove(e));
 		// Calculate custom cursor position on scroll/wheel
 		document.addEventListener("wheel", e => {
 			CursorFollow(e);
