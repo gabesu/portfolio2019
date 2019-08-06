@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { TweenLite, Power2 } from "gsap";
 
 import "./sidebar.scss";
 const Sidebar = () => {
+	const sidebar = useRef(null);
+
+	useEffect(() => {
+		TweenLite.from(sidebar.current, 0.8, {
+			x: "-100%",
+			ease: Power2.easeIn,
+			delay: 1
+		});
+	});
 	return (
-		<aside className="side-bar">
+		<aside className="side-bar" ref={sidebar}>
 			<a href="./" className="logo" aria-label="Home Link">
 				<svg
 					width="25"

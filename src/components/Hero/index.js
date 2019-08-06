@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import "./hero.scss";
 import "./Sketch";
 import Sketch from "./Sketch";
-import { TweenLite } from "gsap";
+import { TweenLite, TimelineMax, Power2 } from "gsap";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
+// import SplitType from "typesplit/splittype";
 const plugin = [ScrollToPlugin];
 
 const handleClick = () => {
@@ -11,6 +12,29 @@ const handleClick = () => {
 };
 
 const Hero = () => {
+	const name = useRef(null);
+	const caption = useRef(null);
+	const workBtn = useRef(null);
+	const heroSketch = useRef(null);
+
+	useEffect(() => {
+		// console.log(nameText);
+		let heroTl = new TimelineMax({ paused: true });
+		heroTl
+			.from(name.current, 0.5, {
+				opacity: 0,
+				y: 10,
+				ease: Power2.easeIn
+			})
+			.from(
+				caption.current,
+				0.5,
+				{ opacity: 0, y: 10, ease: Power2.easeIn },
+				"+=0.3"
+			)
+			.from(workBtn.current, 0.3, { opacity: 0, x: 10, ease: Power2.easeIn });
+		heroTl.play();
+	});
 	return (
 		<header className="header">
 			<section>
@@ -28,13 +52,14 @@ const Hero = () => {
 						/>
 					</svg>
 				</a>
-				<p className="name">Mmëdiong Gabriel Esu</p>
-				<h1>CREATIVE DESIGNER & DEVELOPER</h1>
+				<p ref={name}>Mmëdiong Gabriel Esu</p>
+				<h1 ref={caption}>CREATIVE DESIGNER & DEVELOPER</h1>
 				<button
 					id="works-btn"
 					aria-label="Selected Works"
 					className="button"
 					onClick={() => handleClick()}
+					ref={workBtn}
 				>
 					Selected Works
 				</button>

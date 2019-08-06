@@ -25,14 +25,28 @@ export default class Works extends Component {
 			allWorks: data,
 			activeWork: data[0],
 			workCount: data.length,
-			entered: true,
+			entered: false,
 			image: myImages[0]
 		};
+		this.works = null;
 	}
 	componentDidMount() {
 		myImages.forEach(image => {
 			new Image().src = image;
 		});
+		const workObserver = new IntersectionObserver(
+			(entries, workObserver) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						this.setState({
+							entered: true
+						});
+					}
+				});
+			},
+			{ threshold: 0.5 }
+		);
+		workObserver.observe(this.works);
 	}
 	nextWork = () => {
 		const newIndex = this.state.activeWork.index + 1;
@@ -88,9 +102,13 @@ export default class Works extends Component {
 		}
 	};
 	render() {
-		const { activeWork, image, workCount, allWorks } = this.state;
+		const { activeWork, image, workCount, allWorks, entered } = this.state;
 		return (
-			<section className="works" id="works">
+			<section
+				className="works"
+				id="works"
+				ref={section => (this.works = section)}
+			>
 				<h3>Selected Works</h3>
 				<div className="work-content">
 					<span className="work-counter">
@@ -107,7 +125,7 @@ export default class Works extends Component {
 					<div className="work">
 						<div className="work-image">
 							<Transition
-								in={this.state.entered}
+								in={entered}
 								onEnter={node => {
 									animation(node, duration);
 								}}
@@ -122,13 +140,7 @@ export default class Works extends Component {
 							</Transition>
 						</div>
 						<Transition
-							in={this.state.entered}
-							// onEnter={node => {
-							// 	animation(node, duration);
-							// }}
-							// onExit={node => {
-							// 	animation(node, duration).reverse(0);
-							// }}
+							in={entered}
 							mountOnEnter
 							unmountOnExit
 							timeout={duration}
