@@ -6,7 +6,8 @@ import "./works.scss";
 import data from "./data";
 import image1 from "./../../assets/images/hfh-cover.png";
 import image2 from "./../../assets/images/piggy.jpg";
-import image3 from "./../../assets/images/phone.gif";
+// import image3 from "./../../assets/images/phone.gif";
+import image3 from "./../../assets/images/eyes.mp4";
 
 const myImages = [image1, image2, image3];
 const duration = 500;
@@ -26,7 +27,8 @@ export default class Works extends Component {
 			activeWork: data[0],
 			workCount: data.length,
 			entered: false,
-			image: myImages[0]
+			image: myImages[0],
+			isVideo: false
 		};
 		this.works = null;
 	}
@@ -48,6 +50,20 @@ export default class Works extends Component {
 		);
 		workObserver.observe(this.works);
 	}
+	checkVideo = image => {
+		if (image.split(".")[2] === "mp4") {
+			this.setState({
+				isVideo: true,
+				entered: true
+			});
+		} else {
+			this.setState({
+				isVideo: false,
+				entered: true
+			});
+		}
+		console.log(image.split(".")[2], this.state.isVideo);
+	};
 	nextWork = () => {
 		const newIndex = this.state.activeWork.index + 1;
 		if (newIndex < data.length) {
@@ -57,9 +73,11 @@ export default class Works extends Component {
 			setTimeout(() => {
 				this.setState({
 					activeWork: data[newIndex],
-					image: myImages[newIndex],
-					entered: true
+					image: myImages[newIndex]
 				});
+				console.log(this.state.image);
+				// Check for video
+				this.checkVideo(this.state.image);
 			}, duration + 15);
 		} else {
 			this.setState({
@@ -68,9 +86,9 @@ export default class Works extends Component {
 			setTimeout(() => {
 				this.setState({
 					activeWork: data[0],
-					image: myImages[0],
-					entered: true
+					image: myImages[0]
 				});
+				this.checkVideo(this.state.image);
 			}, duration + 10);
 		}
 	};
@@ -84,9 +102,9 @@ export default class Works extends Component {
 			setTimeout(() => {
 				this.setState({
 					activeWork: data[newIndex],
-					image: myImages[newIndex],
-					entered: true
+					image: myImages[newIndex]
 				});
+				this.checkVideo(this.state.image);
 			}, duration + 10);
 		} else {
 			this.setState({
@@ -95,14 +113,21 @@ export default class Works extends Component {
 			setTimeout(() => {
 				this.setState({
 					activeWork: data[lastIndex],
-					image: myImages[lastIndex],
-					entered: true
+					image: myImages[lastIndex]
 				});
+				this.checkVideo(this.state.image);
 			}, duration + 10);
 		}
 	};
 	render() {
-		const { activeWork, image, workCount, allWorks, entered } = this.state;
+		const {
+			activeWork,
+			image,
+			workCount,
+			allWorks,
+			entered,
+			isVideo
+		} = this.state;
 		return (
 			<section
 				className="works"
@@ -136,7 +161,13 @@ export default class Works extends Component {
 								unmountOnExit
 								timeout={duration}
 							>
-								<img src={image} alt="" />
+								<React.Fragment>
+									{!isVideo ? (
+										<img src={image} alt="" />
+									) : (
+										isVideo && <video src={image} alt="" autoPlay loop />
+									)}
+								</React.Fragment>
 							</Transition>
 						</div>
 						<Transition
