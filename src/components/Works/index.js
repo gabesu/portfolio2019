@@ -62,7 +62,6 @@ export default class Works extends Component {
 				entered: true
 			});
 		}
-		console.log(image.split(".")[2], this.state.isVideo);
 	};
 	nextWork = () => {
 		const newIndex = this.state.activeWork.index + 1;
@@ -75,7 +74,6 @@ export default class Works extends Component {
 					activeWork: data[newIndex],
 					image: myImages[newIndex]
 				});
-				console.log(this.state.image);
 				// Check for video
 				this.checkVideo(this.state.image);
 			}, duration + 15);
