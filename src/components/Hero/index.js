@@ -15,7 +15,6 @@ const Hero = () => {
 	const name = useRef(null);
 	const caption = useRef(null);
 	const workBtn = useRef(null);
-	const heroSketch = useRef(null);
 
 	useEffect(() => {
 		// console.log(nameText);

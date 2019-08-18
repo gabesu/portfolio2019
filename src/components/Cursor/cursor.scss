@@ -9,6 +9,7 @@
 	mix-blend-mode: exclusion;
 	-webkit-mix-blend-mode: exclusion;
 	-moz-mix-blend-mode: exclusion;
+	transition: all 300ms ease-out;
 	@include mobile {
 		display: none;
 	}
