@@ -5,7 +5,7 @@ const Footer = () => {
 	return (
 		<footer>
 			<div className="copyright">
-				Designed and Developed by Mmëdiong Gabriel Esu &copy; 2019
+				Designed and Developed by Mmëdiong Gabriel Esu &copy; 2022
 			</div>
 		</footer>
 	);
